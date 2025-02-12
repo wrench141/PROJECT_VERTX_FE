@@ -1,0 +1,18 @@
+.inp{
+    width: 100%;
+    height: max-content;
+    padding: 13px;
+    font-size: 13px;
+    border-radius: 10px;
+    font-family: "Manrope";
+    font-weight: 600;
+    cursor: pointer;
+    transition: all ease 0.3s;
+    margin-bottom: 10px;
+}
+
+.inp.dark{
+    color: white;
+    background: black;
+    border: 1px solid #9f9f9f;
+}

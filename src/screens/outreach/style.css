@@ -1,0 +1,48 @@
+.container.ot{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+}
+
+.container .head{
+    color: white;
+    font-family: "Manrope";
+}
+
+.container .topbar{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #75757569;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    overflow: hidden;
+    color: white;
+}
+
+.container .topbar .wrap{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container .topbar .wrap .title{
+    font-family: "Kode mono";
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.container .topbar .wrap .logo{
+    width: 30px;
+    height: auto;
+}
+
+.container .bottom{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+}
