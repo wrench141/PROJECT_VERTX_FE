@@ -4,6 +4,7 @@ import Button from "../button/component";
 import { useEffect, useState } from "react";
 
 export default function Navigation() {
+  const navigate = useNavigate()
   const [currentPage, setPage] = useState("explore")
   useEffect(() => {
     setPage(window.location.href.split("/").pop());

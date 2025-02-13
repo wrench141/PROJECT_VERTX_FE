@@ -21,7 +21,7 @@ export default function Callback() {
       console.log(response.data)
       if(response.status == 200){
         window.localStorage.setItem("token", response?.data?.token);
-        navigate("/outreach");
+        // navigate("/outreach");
       }
   };
   
@@ -36,8 +36,8 @@ export default function Callback() {
     <div className="auth-container">
       <div className="wrapper" style={{width: "40%"}}>
         <img src={logo} alt="" className="logo-sn" />
-        <p className="title" style={{fontSize: "30px", marginBottom: "0px"}}>Authentication Success</p>
-        <p className="sub">Redirecting to dashbard...</p>
+        <p className="title" style={{fontSize: "30px", marginBottom: "0px"}}>Hey Vertx user, We are launching soon.</p>
+        <p className="sub">Thanks for pre-registering to our vertx application, we will notify soon</p>
       </div>
     </div>
   );

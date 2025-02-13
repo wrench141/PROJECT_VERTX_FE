@@ -3,11 +3,12 @@ import logo from "../../assets/logo.png";
 import axios from "axios";
 import API_KEY from "../../../key.js";
 import {useState} from "react";
-
+import { useNavigate } from "react-router";
 import Input from "../../components/input/component";
 import Button from "../../components/button/component";
 
 export default function Signup(){
+    const navigate = useNavigate();
     const [username, setUname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPass] = useState("");
@@ -34,6 +35,7 @@ export default function Signup(){
         setResp(response?.data?.msg);
         if(response.status == 200){
           window.localStorage.setItem("token", response?.data?.token)
+          navigate("/callback")
         }
         setShow(true);
       }

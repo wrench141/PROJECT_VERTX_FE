@@ -21,15 +21,15 @@ export default function Explore(){
           <Navigation />
           <div className="esection">
             <div className="anim">
-              <p className="head">✴ Find your Investor ✴</p>
+              <p className="head">✴ Find your Co Founder ✴</p>
               <p className="sub">
-                Match with the right investor tailored to your unique business
+                Match with the right co-founder tailored to your unique business
                 requirements through the Vertx platform
               </p>
               <div className="inpwrapper">
                 <input
                   type="text"
-                  placeholder="Search for Investors ✦"
+                  placeholder="Search for Co Founders ✦"
                   className="search"
                 />
                 <button className="cam">

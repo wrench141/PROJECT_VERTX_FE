@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import axios from "axios";
 import API_KEY from "../../../key.js";
 import { useState } from "react";
-
+import { useNavigate } from "react-router";
 import Input from "../../components/input/component";
 import Button from "../../components/button/component";
 
@@ -16,6 +16,7 @@ export default function Signin() {
   const [load, setLoad] = useState(false);
 
   const signinHandler = async () => {
+    const navigate = useNavigate();
     setLoad(true)
     const response = await axios
       .post(API_KEY + "/auth/signin", {
@@ -32,6 +33,7 @@ export default function Signin() {
         setResp(response?.data?.msg);
         if (response.status == 200) {
           window.localStorage.setItem("token", response?.data?.token);
+          navigate("/callback")
         }
         setShow(true);
     }

@@ -1,7 +1,9 @@
 import {Route, Routes} from "react-router"
+import Nopage from "./screens/404";
 import Signup from "./screens/auth";
 import Callback from "./screens/auth/callback";
 import Signin from "./screens/auth/signin";
+import GenerateEmail from "./screens/emails";
 import Explore from "./screens/explore";
 import LandingAuth from "./screens/landing"
 import Outreach from "./screens/outreach";
@@ -16,6 +18,9 @@ function App() {
 
       <Route path="/outreach" element={<Outreach />} />
       <Route path="/explore" element={<Explore />} />
+      <Route path="/generatemail" element={<GenerateEmail />} />
+
+      <Route path="*" element={<Nopage />} />
     </Routes>
   );
 }
