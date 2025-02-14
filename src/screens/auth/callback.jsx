@@ -5,6 +5,7 @@ import API_KEY from "../../../key.js";
 import { useState } from "react";
 import { useSearchParams, useNavigate } from "react-router"
 import { useEffect } from "react";
+import Button from "../../components/button/component"
 
 export default function Callback() {
   const navigate = useNavigate();
@@ -21,7 +22,6 @@ export default function Callback() {
       console.log(response.data)
       if(response.status == 200){
         window.localStorage.setItem("token", response?.data?.token);
-        // navigate("/outreach");
       }
   };
   
@@ -33,11 +33,23 @@ export default function Callback() {
   }, [])
 
   return (
-    <div className="auth-container">
-      <div className="wrapper" style={{width: "40%"}}>
-        <img src={logo} alt="" className="logo-sn" />
-        <p className="title" style={{fontSize: "30px", marginBottom: "0px"}}>Hey Vertx user, We are launching soon.</p>
-        <p className="sub">Thanks for pre-registering to our vertx application, we will notify soon</p>
+    <div className="auth-container lg">
+      <div className="logowrap">
+        <img src={logo} alt="" className="logo-zn" />
+        <div className="filter"></div>
+      </div>
+      <p className="ltitle">
+        Welcome <span className="ln">⇢</span> <span>[Vertex AI]</span>
+      </p>
+      <p className="lsub">
+        where visionaries connect, investors collaborate, and dreams take
+        flight. Some parts of this page are still under development, but feel
+        free to explore and discover what's in store! 🚀
+      </p>
+      <div style={{ width: "15%", marginTop: 35 }} className="btns">
+        <Button context={"Explore 🚀"} theme={"light"} callback={() => {
+          navigate("/outreach");
+        }} />
       </div>
     </div>
   );

@@ -139,3 +139,98 @@
     font-size: 14px;
     text-align: center;
 }
+
+
+.auth-container .logowrap {
+    width: max-content;
+    height: max-content;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container .logowrap .logo-zn{
+    width: 250%;
+    height: auto;
+    animation: zoomout 2s linear forwards;
+}
+
+@keyframes zoomout {
+    0% {
+        width: 250%;
+    }
+    100% {
+        width: 80px;
+    }
+}
+
+
+.auth-container .logowrap .filter{
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, black, black);
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation-delay: 2.5;
+    animation: logoanim 1s ease-in-out forwards;
+}
+
+
+@keyframes logoanim {
+    0% {
+        right: 0;
+    }
+
+    100% {
+        right: -250%;
+    }
+}
+
+
+.auth-container .ltitle{
+    color: white;
+    margin-top: 40px;
+    font-family: "Sacramento";
+    font-weight: 600;
+    font-size: 40px;
+    background-image: linear-gradient(to right, #9b9b9b, white, #9b9b9b);
+    color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: fade 0.4s ease forwards;
+    animation-delay: 2.5s;
+}
+
+.auth-container .ltitle span{
+    font-family: "Kode Mono";
+    font-size: 22.6px;
+}
+
+.auth-container .lsub{
+    color: #727272;
+    font-family: "Manrope";
+    font-size: 13.5px;
+    margin-top: 10px;
+    width: 30%;
+    text-align: center;
+    opacity: 0;
+    animation: fade 0.5s ease forwards;
+    animation-delay: 2.7s;
+}
+
+.auth-container .btns{
+    opacity: 0;
+    animation: fade 0.5s ease forwards;
+    animation-delay: 3s;
+}
+
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}

@@ -1,5 +1,6 @@
 import {Route, Routes} from "react-router"
 import Nopage from "./screens/404";
+import Admin from "./screens/admin";
 import Signup from "./screens/auth";
 import Callback from "./screens/auth/callback";
 import Signin from "./screens/auth/signin";
@@ -22,7 +23,10 @@ function App() {
       <Route path="/flow/generatemail" element={<GenerateEmail />} />
       <Route path="/flow/chat" element={<Chat />} />
 
+      <Route path="/admin" element={<Admin />} />
+
       <Route path="*" element={<Nopage />} />
+
     </Routes>
   );
 }
