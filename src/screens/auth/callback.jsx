@@ -39,7 +39,7 @@ export default function Callback() {
         <div className="filter"></div>
       </div>
       <p className="ltitle">
-        Welcome <span className="ln">⇢</span> <span>[Vertex AI]</span>
+        Welcome <span className="ln">⇢</span> <span>[Vertx AI]</span>
       </p>
       <p className="lsub">
         where visionaries connect, investors collaborate, and dreams take
@@ -47,7 +47,7 @@ export default function Callback() {
         free to explore and discover what's in store! 🚀
       </p>
       <div style={{ width: "15%", marginTop: 35 }} className="btns">
-        <Button context={"Explore 🚀"} theme={"light"} callback={() => {
+        <Button context={"Explore"} theme={"light"} callback={() => {
           navigate("/outreach");
         }} />
       </div>

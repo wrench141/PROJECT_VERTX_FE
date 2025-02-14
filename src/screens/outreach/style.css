@@ -52,6 +52,7 @@
 .container-ot .msection {
     background: #0d0d0d;
     max-height: max-content;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
