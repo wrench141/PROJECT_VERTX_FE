@@ -171,4 +171,122 @@
     height: 50px;
     border-bottom: 1px solid #171717;
     background: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    padding-right: 0;
+}
+
+.emailCont .sections .editor .enav .cls{
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-left:1px solid #222222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: #222;
+    font-size: 27px;
+    color: #9a9a9a;
+    cursor: pointer;
+}
+
+.emailCont .sections .editor .area{
+    width: 100%;
+    height: calc(100% - 50px);
+    padding: 20px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: "Manrope";
+    outline: none;
+    font-size: 13px;
+    display: grid;
+    grid-template-rows: 40px 40px 1fr;
+    gap: 5px
+}
+
+.emailCont .sections .editor .area .fm{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #36363652;
+    border-radius: 5px;
+    padding: 0 15px;
+    color: white;
+    font-family: "Manrope";
+    outline: none;
+    background: #121212;
+}
+
+.emailCont .sections .editor .area .body{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.emailCont .sections .editor .area .tarea{
+    width: 100%;
+    height: 100%;
+    border: 1px solid #36363652;
+    border-radius: 5px;
+    color: white;
+    font-family: "Manrope";
+    outline: none;
+    font-size: 13px;
+    padding: 15px;
+    position: relative;
+    padding-top: 60px;
+    background: #121212;
+}
+
+.emailCont .sections .float{
+    width: max-content;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+} 
+
+.emailCont .sections .editor .area .tarea .set{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.emailCont .sections .editor .area .body .set{
+    width: max-content;
+    height: 30px;
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3;
+}
+
+.emailCont .sections .editor .area .body .set .style{
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #36363652;
+    background: #1a1a1a;
+    color: #c2c2c2;
+    font-family: "Manrope";
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.emailCont .sections .editor .area .body .set .style.b{
+    font-weight: 700;
+}
+
+.emailCont .sections .editor .area .body .set .style.u{
+    text-decoration: underline;
+}
+
+.emailCont .sections .editor .area .body .set .style.i{
+    font-style: italic;
+    font-family: "Kode Mono";
 }
