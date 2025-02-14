@@ -12,6 +12,8 @@ import Outreach from "./screens/outreach";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Callback />} />
+
       <Route path="/authentication" element={<LandingAuth />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
