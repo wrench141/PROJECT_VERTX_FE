@@ -66,6 +66,8 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
+    background-image: radial-gradient(#222222 1.5px, transparent 1.5px);
+    background-size: 40px 40px;
 }
 
 .container-ot .esection .head{

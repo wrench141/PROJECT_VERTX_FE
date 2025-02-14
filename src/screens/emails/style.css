@@ -17,17 +17,28 @@
     color: white;
     font-family: "Kode Mono";
     gap: 10px;
-    justify-content: center;
-    /* --s: 30px;
-    --c1: #000000;
-    --c2: #0f0f0f;
+    justify-content: space-between;
+}
 
-    --c: var(--c1) 0 25%, #0000 0;
-    --p: 0 0/calc(3*var(--s)) calc(2*var(--s));
-    background:
-        conic-gradient(from -45deg at 75% 62.5%, var(--c)) var(--p),
-        conic-gradient(from 135deg at 25% 37.5%, var(--c)) var(--p),
-        repeating-conic-gradient(from 90deg, var(--c), var(--c2) 0 50%) 0 0/var(--s) var(--s); */
+.emailCont .topbar div{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.emailCont .topbar div.btns{
+    font-size: 13px;
+    width: max-content;
+    height: max-content;
+    padding: 6px 14px;
+    /* border: 1px solid #8ff52a36; */
+    background: linear-gradient(35deg, #a1a1a1db, #fffffff7, #a1a1a1db);
+    border-radius: 50px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
 }
 
 .emailCont .topbar .title{

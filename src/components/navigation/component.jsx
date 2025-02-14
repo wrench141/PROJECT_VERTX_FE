@@ -38,7 +38,7 @@ export default function Navigation() {
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <Button theme={"light"} context={"VERTX FLOW"} callback={() => {}} />
+        <Button theme={"light"} context={"VERTX FLOW"} callback={() => {navigate("/flow/generatemail");}} />
         <Button
           theme={"dark"}
           context={"GET OUT"}
