@@ -386,3 +386,39 @@
     font-family: "Kode Mono";
     color: #bdbdbd;
 }
+
+
+@media only screen and (max-width: 946px) {
+    .pipeline .sections .cards .card .vertline,
+    .pipeline .sections .bx .line,
+    .pipeline .sections .cards .card .horline{
+        display: none;
+    }
+    .pipeline .sections .bx .box.mb{
+        margin-bottom: 40px;
+        font-size: 34px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        font-family: "Manrope";
+        text-align: center;
+    }
+    .pipeline{
+        height: max-content;
+    }
+    .pipeline .sections .cards{
+        grid-template-columns: 1fr;
+    }
+
+    .pipeline .sections .cards .card{
+        display: block;
+    }
+    .pipeline .sections .cards .card .cd .bx .incard{
+        margin-bottom: 20px;
+        background: #0e0e0e;
+        border: 1px solid #252525
+    }
+    .pipeline .topbar div.btns{
+        display: none;
+    }
+}

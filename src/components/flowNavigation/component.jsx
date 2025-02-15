@@ -80,6 +80,7 @@ export default function FlowNav() {
             <p className="i">Resources</p>
           </div>
         </a>
+        <div className="creds">$5000 Credits</div>
       </div>
     </div>
   );

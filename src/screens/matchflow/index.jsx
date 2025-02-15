@@ -13,7 +13,7 @@ function Step1({ cb }) {
         Sync your profile to auto-fill business details. Complete any missing
         fields manually.
       </p>
-      <div className="wrap" style={{ width: "15%" }}>
+      <div className="wrap pr15">
         <Button context={"Sync Data"} theme={"light"} callback={() => cb()} />
       </div>
     </div>

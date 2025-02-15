@@ -15,7 +15,7 @@ export default function Pipeline() {
       </div>
       <div className="sections">
         <div className="bx">
-          <div className="box">Vertx Pipeline</div>
+          <div className="box mb">Vertx Pipeline</div>
         </div>
         <div className="bx">
           <div className="line"></div>

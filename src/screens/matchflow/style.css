@@ -302,3 +302,62 @@
 .feleka .btnwrap .btnl{
     width: 13%;
 }
+
+
+.wrap.pr15{
+    width: 15%;
+}
+
+@media only screen and (max-width: 946px) {
+    .wrap.pr15{
+        width: max-content;
+    }
+    .mt .section .st .title{
+        font-size: 20px;
+        font-family: "Manrope";
+        font-weight: 700;
+    }
+    .mt .section .st .sub{
+        width: 90%;
+    }
+    .mt .section .st.sc2{
+        grid-template-columns: 1fr;
+        overflow-y: scroll;
+    }
+    .mt .section .st.sc2 .meta{
+        align-items: flex-start;
+        padding: 40px;
+    }
+    .mt .section .st.sc2 .inpWrap{
+        overflow-y: initial;
+    }
+    .mt .section .st.sc2 .inpWrap .wrap,
+    .mt .section .st.sc2 .inpWrap .wrap.btns{
+        width: 100%;
+    }
+    .feleka .sections{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .feleka .sections .data .sub{
+        width: 100%;
+    }
+    .feleka{
+        height: max-content;
+        overflow-y: scroll;
+    }
+    .feleka .btnwrap .btnl{
+        width: 100%;
+    }
+    .feleka .table .row{
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .feleka .table .row.headr{
+        display: none;
+    }
+    .feleka .table .row .data{
+        width: 100%;
+        text-align: justify;
+    }
+}

@@ -301,3 +301,15 @@
     font-style: italic;
     font-family: "Kode Mono";
 }
+
+@media only screen and (max-width: 946px) {
+    .emailCont .sections{
+        grid-template-columns: 1fr;
+    }
+    .emailCont{
+        height: max-content;
+    }
+    .emailCont .sections .cs{
+        height: 100vh;
+    }
+}

@@ -24,7 +24,7 @@
     background-color: #101010;
     transform: translateX(-100%);
     transition: all 0.3s ease;
-    z-index: 3;
+    z-index: 4;
     background-image: radial-gradient(#222222 1.5px, transparent 1.5px);
     background-size: 32px 32px;
     background-color: #101010;
@@ -169,4 +169,19 @@
 
   .flownav .menu .nitem .i{
     font-size: 12px;
+}
+
+.flownav .creds{
+  font-size: 13px;
+  width: max-content;
+  height: max-content;
+  padding: 6px 14px;
+  /* border: 1px solid #8ff52a36; */
+  background: linear-gradient(35deg, #a1a1a1db, #fffffff7, #a1a1a1db);
+  border-radius: 50px;
+  font-weight: 700;
+  color: black;
+  cursor: pointer;
+  font-family: "Kode Mono";
+  margin-top: 20px;
 }
