@@ -1,3 +1,3 @@
-const API_KEY="http://localhost:4000";
+const API_KEY = "https://vertx-server.vercel.app";
 
 export default API_KEY;
