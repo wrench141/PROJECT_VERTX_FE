@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import Button from "../button/component";
 import { useEffect, useState } from "react";
 
-export default function Navigation() {
+export default function Navigation({cb}) {
   const navigate = useNavigate()
   const [currentPage, setPage] = useState("explore")
   useEffect(() => {
@@ -11,6 +11,7 @@ export default function Navigation() {
   }, [])
   return (
     <div className="nav">
+      <ion-icon name="close-outline" onClick={() => cb()} color={"white"} className="close"></ion-icon>
       <div className="linkwrap">
         <div className={currentPage == "explore" ? "link sel" : "link"}>
           <ion-icon name="search-outline"></ion-icon>
@@ -38,7 +39,13 @@ export default function Navigation() {
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
-        <Button theme={"light"} context={"VERTX FLOW"} callback={() => {navigate("/flow/generatemail");}} />
+        <Button
+          theme={"light"}
+          context={"VERTX FLOW"}
+          callback={() => {
+            navigate("/flow/match flow");
+          }}
+        />
         <Button
           theme={"dark"}
           context={"GET OUT"}

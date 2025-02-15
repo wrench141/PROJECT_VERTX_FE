@@ -158,3 +158,21 @@
     padding: 3px 5px;
     border-radius: 50px;
 }
+
+
+@media only screen and (max-width: 946px) {
+    .container-ot .topbar .btwrap {
+        display: none;
+    }
+        .container-ot .msection .filter{
+            width: 100%;
+            flex-wrap: wrap;
+        }
+    .container-ot .msection .profilecards,
+    .container-ot .bottom{
+        grid-template-columns: 1fr;
+    }
+    .container-ot{
+        height: max-content;
+    }
+}

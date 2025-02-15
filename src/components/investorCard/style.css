@@ -132,3 +132,18 @@
     letter-spacing: 1px;
     color: #b8b8b8;
 }
+
+@media only screen and (max-width: 946px) {
+    .backdrop .popup {
+        width: 100%;
+    }
+    .backdrop{
+        align-items: flex-start;
+        height: max-content;
+    }
+    .backdrop .popup .topsec{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}

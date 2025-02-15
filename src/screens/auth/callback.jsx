@@ -46,7 +46,7 @@ export default function Callback() {
         flight. Some parts of this page are still under development, but feel
         free to explore and discover what's in store! 🚀
       </p>
-      <div style={{ width: "15%", marginTop: 35 }} className="btns">
+      <div style={{marginTop: 35 }} className="btns">
         <Button context={"Explore"} theme={"light"} callback={() => {
           navigate("/outreach");
         }} />

@@ -3,22 +3,28 @@ import logo from "../../assets/logo.png";
 import Button from "../../components/button/component";
 import {useNavigate} from "react-router"
 import Navigation from "../../components/navigation/component";
+import { useState } from "react";
 
 export default function Explore(){
     const navigate = useNavigate();
+    const [openNav, setNav] = useState(false);
+
     return (
-      <div className="container-ot">
-        <div className="topbar" >
+      <div className="container-ot-exp">
+        <div className="topbar">
           <div className="wrap">
             <img src={logo} alt="logo" className="logo" />
             <p className="title">Vertx AI</p>
           </div>
-          <div className="btwrap">
+          <ion-icon className="menu" name="menu-outline" color={"white"} style={{fontSize: "25px"}} onClick={() => setNav(true)}></ion-icon>
+          <div className="btwrap mb">
             <Button context={"Login"} theme={"dark"} callback={() => {}} />
           </div>
         </div>
-        <div className="bottom" style={{height: "100%"}}>
-          <Navigation />
+        <div className="bottom" style={{ height: "100%" }}>
+          {openNav ? (
+            <Navigation cb={() => setNav(false)} />
+          ): null}
           <div className="esection">
             <div className="anim">
               <p className="head">✴ Find your Co Founder ✴</p>

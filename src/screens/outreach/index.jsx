@@ -31,6 +31,8 @@ function Card({data}){
 
 export default function Outreach(){
     const navigate = useNavigate();
+    const [openNav, setNav] = useState(false);
+
     return (
       <div className="container-ot">
         <div className="topbar">
@@ -38,12 +40,19 @@ export default function Outreach(){
             <img src={logo} alt="logo" className="logo" />
             <p className="title">Vertx AI</p>
           </div>
-          <div className="btwrap">
+          <ion-icon
+            className="menu"
+            name="menu-outline"
+            color={"white"}
+            style={{ fontSize: "25px" }}
+            onClick={() => setNav(true)}
+          ></ion-icon>
+          <div className="btwrap mb">
             <Button context={"Login"} theme={"dark"} callback={() => {}} />
           </div>
         </div>
         <div className="bottom">
-          <Navigation />
+          {openNav ? <Navigation cb={() => setNav(false)} /> : null}
           <div className="msection">
             <p className="head">React out top Investors.</p>
             <p className="subhead msec">

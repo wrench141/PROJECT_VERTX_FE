@@ -1,17 +1,131 @@
 import FlowNav from "../../components/flowNavigation/component";
 import "./style.css";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 
-export default function Events() {
+export default function Pipeline() {
   return (
-    <div className="events">
+    <div className="pipeline">
       <FlowNav />
       <div className="topbar">
         <div>
           <img src={logo} alt="" className="logo" />
-          <p className="title">VERTX EVENTS</p>
+          <p className="title">VERTX PIPELINE</p>
         </div>
         <div className="btns">$5000 Credits</div>
+      </div>
+      <div className="sections">
+        <div className="bx">
+          <div className="box">Vertx Pipeline</div>
+        </div>
+        <div className="bx">
+          <div className="line"></div>
+        </div>
+        <div className="cards">
+          {/* 1 */}
+          <div className="card half st">
+            <div className="horline"></div>
+            <div className="vertline">
+              <div className="line"></div>
+            </div>
+            <div className="cd">
+              <div className="bx">
+                <div className="box">Matched investors</div>
+                <div className="incard">
+                  <div className="crd">
+                    <div className="count">01</div>
+                    <div>
+                      <p className="title">Chandra Sidhardha</p>
+                      <p className="sub">Dedsec Funds</p>
+                    </div>
+                  </div>
+                  <div className="crd">
+                    <div className="count">02</div>
+                    <div>
+                      <p className="title">Chandra Sidhardha</p>
+                      <p className="sub">Dedsec Funds</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 2 */}
+          <div className="card lft">
+            <div className="horline">
+              <div className="dot schedule"></div>
+              <div className="dot matched"></div>
+            </div>
+            <div className="vertline">
+              <div className="line"></div>
+            </div>
+            <div className="cd">
+              <div className="bx">
+                <div className="box">Emails Scheduled</div>
+                <div className="incard">
+                  <div className="crd">
+                    <div className="count">
+                      <ion-icon name="mail-outline" style={{fontSize: "15px"}}></ion-icon>
+                    </div>
+                    <div>
+                      <p className="title">Mail To: Someone@gmail.com</p>
+                      <p className="sub">09:03pm</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 3 */}
+          <div className="card rft">
+            <div className="horline">
+              <div className="dot replied"></div>
+              <div className="dot followed"></div>
+            </div>
+            <div className="vertline">
+              <div className="line"></div>
+            </div>
+            <div className="cd">
+              <div className="bx">
+                <div className="box">Replied Back</div>
+                <div className="incard">
+                  <div className="crd">
+                    <div className="count">
+                      <ion-icon name="mail-outline" style={{fontSize: "15px"}}></ion-icon>
+                    </div>
+                    <div>
+                      <p className="title">Chandra Sidhardha</p>
+                      <p className="sub">Dedsec Funds</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 */}
+          <div className="card half en">
+            <div className="horline"></div>
+            <div className="vertline">
+              <div className="line"></div>
+            </div>
+            <div className="cd">
+              <div className="bx">
+                <div className="box">Follow Up</div>
+                <div className="incard">
+                  <div className="crd">
+                    <div className="count">01</div>
+                    <div>
+                      <p className="title">Chandra Sidhardha</p>
+                      <p className="sub">Dedsec Funds</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

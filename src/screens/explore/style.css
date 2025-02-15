@@ -1,4 +1,4 @@
-.container-ot{
+.container-ot-exp{
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -7,12 +7,12 @@
     height: 100vh;
 }
 
-.container-ot .head{
+.container-ot-exp .head{
     color: white;
     font-family: "Manrope";
 }
 
-.container-ot-ot .topbar{
+.container-ot-exp .topbar{
     width: 100%;
     height: auto;
     border-bottom: 1px solid #75757569;
@@ -25,39 +25,39 @@
     background: black;
 }
 
-.container-ot .topbar .wrap{
+.container-ot-exp .topbar .wrap{
     display: flex;
     gap: 10px;
     align-items: center;
 }
 
-.container-ot .topbar .wrap .title{
+.container-ot-exp .topbar .wrap .title{
     font-family: "Kode mono";
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.container-ot .topbar .wrap .logo{
+.container-ot-exp .topbar .wrap .logo{
     width: 30px;
     height: auto;
 }
 
-.container-ot .bottom{
+.container-ot-exp .bottom{
     width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 0.2fr 1fr;
 }
 
-.container-ot .esection{
+.container-ot-exp .esection{
     background: #0d0d0d;
     max-height: max-content;
     display: grid;
     grid-template-columns: 1fr 0.3fr;
 }
 
-.container-ot .esection .anim{
+.container-ot-exp .esection .anim{
     width: 100%;
     height: 100%;
     display: flex;
@@ -70,12 +70,12 @@
     background-size: 40px 40px;
 }
 
-.container-ot .esection .head{
+.container-ot-exp .esection .head{
     font-size: 20px;
     font-weight: 600;
 }
 
-.container-ot .esection .sub{
+.container-ot-exp .esection .sub{
     color: white;
     font-size: 14px;
     font-family: "Manrope";
@@ -84,7 +84,7 @@
     text-align: center;
 }
 
-.container-ot .esection .inpwrapper{
+.container-ot-exp .esection .inpwrapper{
     width: 40%;
     height: 45px;
     display: flex;
@@ -93,7 +93,7 @@
     margin-top: 30px;
 }
 
-.container-ot .esection .search{
+.container-ot-exp .esection .search{
     width: 100%;
     height: 45px;
     border: 1px solid grey;
@@ -107,7 +107,7 @@
     border-right: none;
     background: linear-gradient(to left ,#1b1b1b, black );
 }
-.container-ot .esection .inpwrapper .cam{
+.container-ot-exp .esection .inpwrapper .cam{
     width: 50px;
     height: 45px;
     border: 1px solid grey;
@@ -122,14 +122,14 @@
     border-left: none;
 }
 
-.container-ot .esection .profiles{
+.container-ot-exp .esection .profiles{
     width: 100%;
     height: 250px;
     background: red;
 }
 
 
-.container-ot .esection .cards{
+.container-ot-exp .esection .cards{
     width: 100%;
     height: 100%;
     display: flex;
@@ -142,7 +142,7 @@
 
 }
 
-.container-ot .esection .cards .card{
+.container-ot-exp .esection .cards .card{
     width: 100%;
     height: max-content;
     overflow: hidden;
@@ -150,11 +150,11 @@
     padding: 5px;
 }
 
-.container-ot .esection .cards .card:hover{
+.container-ot-exp .esection .cards .card:hover{
     background: #161616;
 }
 
-.container-ot .esection .cards .card .banner{
+.container-ot-exp .esection .cards .card .banner{
     width: 100%;
     border: 1px solid #2c2c2c;
     height: 120px;
@@ -169,11 +169,45 @@
     font-size: 26px;
 }
 
-.container-ot .esection .cards .card .news-details{
+.container-ot-exp .esection .cards .card .news-details{
     width: 100%;
     height: max-content;
     font-family: "Manrope";
     color: #acacac;
     font-size: 12px;
     padding: 10px;
+}
+
+.container-ot-exp .topbar .menu{
+    display: none;
+}
+
+@media only screen and (max-width: 946px) {
+    .container-ot-exp .topbar .btwrap{
+        display: none;
+    }
+    .container-ot-exp .topbar .menu{
+        display: block;
+    }
+    .container-ot-exp .topbar{
+        overflow: hidden;
+    }
+    .container-ot-exp .bottom,
+    .container-ot-exp .esection{
+        grid-template-columns: 1fr;
+    }
+
+    .container-ot-exp .esection{
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    .container-ot-exp{
+        overflow: scroll;
+        height: max-content;
+    }
+        .container-ot-exp .esection .inpwrapper,
+        .container-ot-exp .esection .sub{
+            width: 80%
+        }
+
 }
