@@ -6,8 +6,10 @@ import Callback from "./screens/auth/callback";
 import Signin from "./screens/auth/signin";
 import Chat from "./screens/chat";
 import GenerateEmail from "./screens/emails";
+import Events from "./screens/events";
 import Explore from "./screens/explore";
 import LandingAuth from "./screens/landing"
+import Matchflow from "./screens/matchflow";
 import Outreach from "./screens/outreach";
 function App() {
   return (
@@ -22,8 +24,10 @@ function App() {
       <Route path="/outreach" element={<Outreach />} />
       <Route path="/explore" element={<Explore />} />
 
-      <Route path="/flow/generatemail" element={<GenerateEmail />} />
+      <Route path="/flow/outbound" element={<GenerateEmail />} />
       <Route path="/flow/chat" element={<Chat />} />
+      <Route path="/flow/match flow" element={<Matchflow />} />
+      <Route path="/flow/pipeline" element={<Events />} />
 
       <Route path="/admin" element={<Admin />} />
 

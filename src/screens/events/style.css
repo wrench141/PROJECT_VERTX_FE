@@ -1,0 +1,50 @@
+.events {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+}
+
+.events .topbar {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #75757569;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    color: white;
+    font-family: "Kode Mono";
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.events .topbar div {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.events .topbar div.btns {
+    font-size: 13px;
+    width: max-content;
+    height: max-content;
+    padding: 6px 14px;
+    /* border: 1px solid #8ff52a36; */
+    background: linear-gradient(35deg, #a1a1a1db, #fffffff7, #a1a1a1db);
+    border-radius: 50px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+}
+
+.events .topbar .title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.events .topbar .logo {
+    width: 25px;
+    height: auto;
+}

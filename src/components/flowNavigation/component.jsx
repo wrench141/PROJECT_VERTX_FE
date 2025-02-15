@@ -1,10 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {useLocation} from "react-router"
 import "./style.css";
 
 export default function FlowNav() {
-  const flowmenu = ["Match Flow", "Outbound", "Events", "Pipeline"];
+  const flowmenu = ["Match Flow", "Outbound", "Pipeline", "Events"];
   const [state, setState] = useState(false);
+
+  const url = ((useLocation()).pathname.split("/").pop())?.replace("%20", " ");
+  
+  console.log(url)
 
   useEffect(() => {
     setState(true);
@@ -22,13 +26,17 @@ export default function FlowNav() {
       <div className="menu">
         <p className="link">Main Flow</p>
         {flowmenu?.map((item, i) => (
-          <div className={i == 0 ? "item sel" : "item"}>
-            <div className="f1">
-              <div className="circle">{i == 0 ? "✦" : i + 1}</div>
-              <div className="mitem">
-                <p className="i">{item}</p>
+          <div className={item.toLowerCase() == url ? "item sel" : "item"}>
+            <a href={`/flow/${item.toLowerCase()}`}>
+              <div className="f1">
+                <div className="circle">
+                  {item.toLowerCase() == url ? "✦" : i + 1}
+                </div>
+                <div className="mitem">
+                  <p className="i">{item}</p>
+                </div>
               </div>
-            </div>
+            </a>
             {i + 1 == flowmenu.length ? null : (
               <div className="f2">
                 <div className="line"></div>
