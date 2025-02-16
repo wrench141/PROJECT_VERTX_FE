@@ -156,26 +156,104 @@
 
 
 @media only screen and (max-width: 946px) {
-    .flow .chatsec .hold,
-    .flow .chatsec .title,
-    .flow .chatsec .sub{
+  .flow .topbar div.btns,
+  .flow .chatsec.mb{
+    display: none;
+  } 
+  .flow{
+    background: #0b0b0b;
+  }
+  .flow .topbar{
+    border-bottom: none;
+  }
+
+  .flow .chatspace{
+      width: 100%;
+      height: calc(100% - 70px);
+      position: relative;
+      display:grid;
+      grid-template-rows: 1fr 70px;
+      justify-items: center;
+    }
+    .flow .chatspace .main,
+    .flow .chatspace .mainsub{
+        color: white;
+        padding: 0 20px;
+        font-family: "Manrope";
+        text-align: center;
+    }
+    
+    .flow .chatspace .main{
+        font-family: "Manrope";
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .flow .chatspace .mainsub{
+        color: grey;
+        font-size: 14px;
         width: 80%;
     }
-
-   .flow .chatsec .title{
+    
+    .flow .chatspace .float{
+        width: 90%;
+        height: 50px;
+        display: grid;
+        grid-template-columns: 1fr 40px;
+        gap: 10px;
+    }
+    .flow .chatspace .float .inp{
+        height: 100%;
+        border: 1px solid #383838;
+        background: #141414;
+        color: white;
+        margin-bottom: 0;
+        border-radius: 30px;
+        outline: none;
+        padding: 0 20px;
         font-size: 15px;
-   }
-
-   .flow .chatsec .hold .btns .send,
-   .flow .chatsec .hold .btns .upload,
-    .flow .chatsec .sub {
-        font-size: 11px;
+        font-weight: 400;
+    }
+    .flow .chatspace .float .btn{
+        width: 50px;
+        height: 50px;
+        background: #141414;
+        border: 1px solid #383838;
+        color: white;
+        font-size: 15px;
+        border-radius: 50%;
+        background: radial-gradient(#303030, black);
     }
 
-    .flow .chatsec .hold .prompt{
-        font-size: 12px;
+    .flow .chatspace .dat{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }  
+
+    .flow .chatspace .msgs{
+        width: 100%;
+        padding: 20px;
+        padding-bottom: 30px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        overflow-y: scroll;
     }
-    .flow .topbar div.btns{
-        display: none;
+    .flow .chatspace .msgs .msg{
+        height: max-content;
+        background: #090909;
+        border: 1px solid #252525;
+        padding: 10px 20px;
+        color: white;
+        font-family: "Manrope";
+        font-size: 15px;
+        border-radius: 10px;
+        max-width: 100%;
+        background: #1c1c1c;
+        color: #d1d1d1;
+        font-weight: 550;
     }
 }
