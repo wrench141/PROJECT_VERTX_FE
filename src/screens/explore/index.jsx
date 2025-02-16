@@ -16,15 +16,27 @@ export default function Explore(){
             <img src={logo} alt="logo" className="logo" />
             <p className="title">Vertx AI</p>
           </div>
-          <ion-icon className="menu" name="menu-outline" color={"white"} style={{fontSize: "25px"}} onClick={() => setNav(true)}></ion-icon>
+          <ion-icon
+            className="menu"
+            name="menu-outline"
+            color={"white"}
+            style={{ fontSize: "25px" }}
+            onClick={() => setNav(true)}
+          ></ion-icon>
           <div className="btwrap mb">
             <Button context={"Login"} theme={"dark"} callback={() => {}} />
           </div>
         </div>
         <div className="bottom" style={{ height: "100%" }}>
-          {openNav ? (
+          <div className="navwrap mb" style={{ height: "calc(100vh - 70px)" }}>
             <Navigation cb={() => setNav(false)} />
-          ): null}
+          </div>
+          <div
+            className={openNav ? "navwrap mbv open" : "navwrap mbv"}
+            style={{ height: "calc(100vh - 70px)" }}
+          >
+            <Navigation cb={() => setNav(false)} />
+          </div>
           <div className="esection">
             <div className="anim">
               <p className="head">✴ Find your Co Founder ✴</p>

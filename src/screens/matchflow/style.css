@@ -150,7 +150,8 @@
 }
 
 .mt .section .st.sc2 .inpWrap .wrap .basicDetails{
-    height: 150px;
+    background: #232323;
+    height: 45px;
     padding: 20px;
     color: grey;
 }
@@ -158,6 +159,15 @@
 .mt .section .st.sc2 .inpWrap .wrap.btns{
     width: 20%;
 }
+
+.mt .section .st.sc2 .inpWrap .wrap .lab{
+    text-transform: capitalize;
+}
+
+.mt .section .st.sc2 .inpWrap .wrap .lab span{
+    color: gold;
+}
+
 
 .feleka{
     width: 100%;

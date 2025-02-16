@@ -35,7 +35,7 @@ export default function Signup(){
         setResp(response?.data?.msg);
         if(response.status == 200){
           window.localStorage.setItem("token", response?.data?.token)
-          navigate("/callback")
+          navigate("/info")
         }
         setShow(true);
       }

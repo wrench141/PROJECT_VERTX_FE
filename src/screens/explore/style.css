@@ -181,8 +181,19 @@
 .container-ot-exp .topbar .menu{
     display: none;
 }
-
+.container-ot-exp .bottom .navwrap.mbv {
+    display: none;
+}
 @media only screen and (max-width: 946px) {
+    .container-ot-exp .bottom .navwrap.mb {
+        display: none;
+    }
+
+    .container-ot-exp .bottom .navwrap.mbv.open {
+        display: block;
+    }
+    
+    .container-ot-exp .bottom .navwrap.mbv,
     .container-ot-exp .topbar .btwrap{
         display: none;
     }

@@ -1,6 +1,6 @@
 import "./style.css";
 
-export default function Input({theme, label, state, setState}){
+export default function Input({theme, label, state, setState, dis}){
     return (
       <input
         type="text"
@@ -8,6 +8,7 @@ export default function Input({theme, label, state, setState}){
         value={state}
         onChange={(e) => setState(e.target.value)}
         placeholder={label}
+        disabled={dis}
       />
     );
 };

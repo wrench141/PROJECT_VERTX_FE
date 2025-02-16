@@ -1,0 +1,181 @@
+.flow {
+    width: 100%;
+    height: 100vh;
+    background: black;
+    gap: 10px;
+    overflow: hidden;
+}
+
+
+.flow .topbar {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #75757569;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    color: white;
+    font-family: "Kode Mono";
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flow .topbar div {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.flow .topbar div.btns {
+    font-size: 13px;
+    width: max-content;
+    height: max-content;
+    padding: 6px 14px;
+    /* border: 1px solid #8ff52a36; */
+    background: linear-gradient(35deg, #a1a1a1db, #fffffff7, #a1a1a1db);
+    border-radius: 50px;
+    font-weight: 700;
+    color: black;
+    cursor: pointer;
+}
+
+.flow .topbar .title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.flow .topbar .logo {
+    width: 25px;
+    height: auto;
+}
+
+.flow .chatsec{
+    width: 100%;
+    height: calc(100% - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-family: "Manrope";
+}
+
+
+.flow .chatsec .title{
+    font-size: 30px;
+    background: linear-gradient(35deg, #07c566, #fff, #066a57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    width: 40%;
+    margin-bottom: 5px;
+}
+.flow .chatsec .sub {
+    margin-bottom: 40px;
+    text-align: left;
+    width: 40%;
+    font-size: 13px;
+    color: #757575;
+}
+
+.flow .chatsec .hold{
+    width: 40%;
+    height: max-content;
+    box-shadow: 0 0 28px #39fff521;
+    border-radius: 20px;
+}
+
+.flow .chatsec .hold .prompt{
+    width: 100%;
+    height: 100px;
+    color: white;
+    font-family: "manrope";
+    padding: 15px;
+    background: #101010;
+    border: 2px solid #323232;
+    border-radius: 20px;
+    font-size: 13px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom: 1px dashed #383838;
+    outline: none;
+}
+
+.flow .chatsec .hold .btns{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #101010;
+    border-radius: 20px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border: 2px solid #323232;
+    border-top: 0;
+    padding: 10px;
+}
+
+.flow .chatsec .hold .btns .upload{
+    width: max-content;
+    height: max-content;
+    border-radius: 10px;
+    padding: 7px 10px;
+    border: none;
+    color: #00b677;
+    font-family: "Manrope";
+    font-size: 12px;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.flow .chatsec .hold .btns .send{
+    width: max-content;
+    height: max-content;
+    border-radius: 10px;
+    padding: 7px 10px;
+    border: none;
+    color: #000000;
+    font-family: "Manrope";
+    font-size: 11px;
+    background-color: #009467;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.flow .chatsec .hold .btns .upload ion-icon{
+    font-size: 15px;
+}
+
+
+
+@media only screen and (max-width: 946px) {
+    .flow .chatsec .hold,
+    .flow .chatsec .title,
+    .flow .chatsec .sub{
+        width: 80%;
+    }
+
+   .flow .chatsec .title{
+        font-size: 15px;
+   }
+
+   .flow .chatsec .hold .btns .send,
+   .flow .chatsec .hold .btns .upload,
+    .flow .chatsec .sub {
+        font-size: 11px;
+    }
+
+    .flow .chatsec .hold .prompt{
+        font-size: 12px;
+    }
+    .flow .topbar div.btns{
+        display: none;
+    }
+}

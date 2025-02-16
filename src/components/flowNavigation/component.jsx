@@ -51,7 +51,7 @@ export default function FlowNav() {
             <p className="i">Dashboard</p>
           </div>
         </a>
-        <a href="/">
+        <a href="/flow/docflow">
           <div className="nitem">
             <ion-icon name="document-outline"></ion-icon>
             <p className="i">Doc Flow</p>
