@@ -52,7 +52,18 @@ export default function Outreach(){
           </div>
         </div>
         <div className="bottom">
-          {openNav ? <Navigation cb={() => setNav(false)} /> : null}
+          <div
+            className="navwrap mb"
+            style={{ height: "calc(100vh - 70px)" }}
+          >
+            <Navigation cb={() => setNav(false)} />
+          </div>
+          <div
+            className={openNav ? "navwrap mbv open" : "navwrap mbv"}
+            style={{ height: "calc(100vh - 70px)" }}
+          >
+            <Navigation cb={() => setNav(false)} />
+          </div>
           <div className="msection">
             <p className="head">React out top Investors.</p>
             <p className="subhead msec">

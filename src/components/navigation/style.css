@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 40px;
-    height: calc(100vh- 70px);
+    height: calc(100vh - 70px);
     background-color: black;
     color: white;
 }
