@@ -14,9 +14,9 @@ export default function Signin() {
   const [resp, setResp] = useState("");
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
+  const navigate = useNavigate();
 
   const signinHandler = async () => {
-    const navigate = useNavigate();
     setLoad(true)
     const response = await axios
       .post(API_KEY + "/auth/signin", {
