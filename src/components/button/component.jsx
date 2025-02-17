@@ -1,9 +1,9 @@
 import "./style.css";
 
-export default function Button({theme, context, callback}){
+export default function Button({theme, context, callback, disabled}){
     return(
         <button className={`button ${theme}`} onClick={() => {
-            callback();
+            disabled ? null : callback();
         }}>{context}</button>
     )
 };

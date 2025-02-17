@@ -241,6 +241,9 @@ function Step2({ cb, back }) {
   const [company, setCompany] = useState(""); 
 
   const [focus, setFocus] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+
+  const [load, setLoad] = useState(false)
 
   const [resp, setResp] = useState("");
 
@@ -258,6 +261,7 @@ function Step2({ cb, back }) {
       setIndustry(response?.data?.msg?.industry);
       setSectors(response?.data?.msg?.sectors);
       setCont(response?.data?.msg?.countries);
+      setCompany(response?.data?.msg?.companyname);
     }
   }
 
@@ -265,20 +269,37 @@ function Step2({ cb, back }) {
     preload();
   }, []);
 
+  useEffect(() => {
+    if(description != "" && sectors != ""){
+      setDisabled(false)
+    }else{
+      setDescription(true)
+    }
+  }, [description, sectors])
+
 
   const startFlow = async() => {
+    setLoad(true)
     const data = {
+      name: "John Doe",
       description,
-      company,
-      sectors, 
-      industry
+      company_name: company,
+      verticals: sectors,
+      industry,
     };
     const response = await axios.post(
-      "https://clumsy-zebra-vertx-c9a7a812.koyeb.app/match/founder-to-founder", data
+      "https://clumsy-zebra-vertx-c9a7a812.koyeb.app/match/founder-to-investor", data
     ).catch((e) => e.response);
     console.log(response.data)
     if(response.status == 200){
-       cb();
+      const resp = await axios.post(API_KEY + "/match/upload", {matches: response?.data}, {
+        headers: {
+          token: window.localStorage.getItem("token")
+        }
+      }).catch((e) => e.response).finally(() => {
+        setLoad(false);
+        cb();
+      })
     }
   }
 
@@ -375,10 +396,11 @@ function Step2({ cb, back }) {
         <div className="wrap">
           <label className="lab">Company Name</label>
           <Input
-            theme={"dark2"}
+            theme={"dark2 basicDetails"}
             label={"Enter your company name"}
             state={company}
             setState={setCompany}
+            dis={true}
           />
         </div>
         <div className="wrap">
@@ -473,10 +495,10 @@ function Step2({ cb, back }) {
         </div>
         <div className="wrap btns">
           <Button
-            context={"Proceed"}
-            theme={"light"}
+            context={load ? <div className='loader' /> : "Proceed"}
+            theme={disabled ? "light disabled" : "light"}
             callback={() => {
-              startFlow();
+              disabled ? null : startFlow();
             }}
           />
         </div>
@@ -486,7 +508,36 @@ function Step2({ cb, back }) {
 }
 
 function Step3() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [matches, setMatches] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [load, setLoad] = useState(false);
+  const navigate = useNavigate();
+
+  const getMatches = async() => {
+    const resp = await axios.get(API_KEY + "/match/matches", {headers: {token: window.localStorage.getItem("token")}}).catch(e => e.response);
+    console.log(resp.data);
+    if(resp.status == 200){
+      setMatches(resp.data.msg);
+    }
+  };
+
+  useEffect(() => {
+    getMatches()
+  }, [])
+
+
+  const startPipe = async() => {
+    setLoad(true)
+    const resp = await axios.patch(API_KEY + "/match/update", {names: selected}, {headers: {token: window.localStorage.getItem("token")}}).catch(e => e.response).finally(() => {
+      setLoad(false);
+      if(response.status === 200){
+        navigate("/flow/outbound")
+      }
+    });
+    console.log(resp);
+  }
+
   return (
     <div className="feleka">
       <div className="sections">
@@ -506,111 +557,54 @@ function Step3() {
         <div className="row headr">
           <p className="head">Name</p>
           <p className="head">Thesis</p>
-          <p className="head">Entry Stage</p>
-          <p className="head">Check Range</p>
+          <p className="head">Location</p>
           <p className="head">Match Score</p>
           <p className="head"></p>
         </div>
-        <div className="row">
-          <td className="data">
-            <p className="tit">Trind Ventures</p>
-            <p className="sub">VC Firm</p>
-          </td>
-          <td className="data">
-            We invest in European software startups with a consumer or community
-            component, such as marketplaces and platforms.
-          </td>
-          <td className="data">Early Revenew</td>
-          <td className="data">$100K - $1M</td>
-          <td className="data">
-            <div className="tag ok">90%</div>
-          </td>
-          <td className="data">
-            <input
-              type="checkbox"
-              className="check"
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setCount(count + 1);
-                } else {
-                  if (count <= 0) {
-                    setCount(0);
+        {matches?.map((match) => (
+          <div className="row">
+            <td className="data">
+              <p className="tit">{match.company_name}</p>
+              <p className="sub">{match.investor_type}</p>
+            </td>
+            <td className="data">{match.explanation}</td>
+            <td className="data">{match.location}</td>
+            <td className="data">
+              <div className="tag ok">{match.groq_score}%</div>
+            </td>
+            <td className="data">
+              <input
+                type="checkbox"
+                className="check"
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setCount(count + 1);
+                    setSelected([...selected, match.company_name]);
                   } else {
-                    setCount(count - 1);
+                    setSelected(
+                      selected.filter((sel) => sel != match.company_name)
+                    );
+                    if (count <= 0) {
+                      setCount(0);
+                    } else {
+                      setCount(count - 1);
+                    }
                   }
-                }
-              }}
-            />
-          </td>
-        </div>
-        <div className="row">
-          <td className="data">
-            <p className="tit">Trind Ventures</p>
-            <p className="sub">VC Firm</p>
-          </td>
-          <td className="data">
-            We invest in European software startups with a consumer or community
-            component, such as marketplaces and platforms.
-          </td>
-          <td className="data">Early Revenew</td>
-          <td className="data">$100K - $1M</td>
-          <td className="data">
-            <div className="tag warn">80%</div>
-          </td>
-          <td className="data">
-            <input
-              type="checkbox"
-              className="check"
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setCount(count + 1);
-                } else {
-                  if (count <= 0) {
-                    setCount(0);
-                  } else {
-                    setCount(count - 1);
-                  }
-                }
-              }}
-            />
-          </td>
-        </div>
-        <div className="row">
-          <td className="data">
-            <p className="tit">Trind Ventures</p>
-            <p className="sub">VC Firm</p>
-          </td>
-          <td className="data">
-            We invest in European software startups with a consumer or community
-            component, such as marketplaces and platforms.
-          </td>
-          <td className="data">Early Revenew</td>
-          <td className="data">$100K - $1M</td>
-          <td className="data">
-            <div className="tag del">70%</div>
-          </td>
-          <td className="data">
-            <input
-              type="checkbox"
-              className="check"
-              onChange={(e) => {
-                if (e.target.checked) {
-                  setCount(count + 1);
-                } else {
-                  if (count <= 0) {
-                    setCount(0);
-                  } else {
-                    setCount(count - 1);
-                  }
-                }
-              }}
-            />
-          </td>
-        </div>
+                }}
+              />
+            </td>
+          </div>
+        ))}
       </div>
       <div className="btnwrap">
         <div className="btnl">
-          <Button context={"Next"} theme={"light"} callback={() => {}} />
+          <Button
+            context={load ? <div className="loader"></div> : "Next"}
+            theme={"light"}
+            callback={() => {
+              startPipe();
+            }}
+          />
         </div>
       </div>
     </div>
@@ -618,7 +612,7 @@ function Step3() {
 }
 
 export default function Matchflow() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(window.localStorage.getItem("step") || 0);
   const token = window.localStorage.getItem("token");
   const navigate = useNavigate();
   useEffect(() => {
@@ -630,7 +624,9 @@ export default function Matchflow() {
       <div className="topbar">
         <div>
           <img src={logo} alt="" className="logo" />
-          <p className="title">VERTX MATCH FLOW</p>
+          <p className="title">
+            VERTX MATCH FLOW <span className="tag">BETA</span>
+          </p>
         </div>
         <div className="btns">$5000 Credits</div>
       </div>

@@ -10,6 +10,7 @@ export default function Pipeline() {
         <div>
           <img src={logo} alt="" className="logo" />
           <p className="title">VERTX PIPELINE</p>
+          <p className="tag">BETA</p>
         </div>
         <div className="btns">$5000 Credits</div>
       </div>

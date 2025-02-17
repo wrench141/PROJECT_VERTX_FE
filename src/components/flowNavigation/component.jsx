@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import {useLocation} from "react-router"
 import "./style.css";
+import Button from "../button/component"
+import { useNavigate } from "react-router";
 
 export default function FlowNav() {
-  const flowmenu = ["Match Flow", "Outbound", "Pipeline", "Events"];
+  const flowmenu = ["Match Flow", "Outbound", "Pipeline"];
   const [state, setState] = useState(false);
 
+  const navigate = useNavigate();
   const url = ((useLocation()).pathname.split("/").pop())?.replace("%20", " ");
   
   console.log(url)
@@ -24,7 +27,27 @@ export default function FlowNav() {
       </button>
       <p className="title">VERTX FLOW</p>
       <div className="menu">
-        <p className="link">Main Flow</p>
+        <button
+          style={{
+            height: 30,
+            display: "flex",
+            gap: 10,
+            color: "white",
+            fontFamily: "Manrope",
+            fontSize: 13,
+            fontWeight: 700,
+            color: "#b2b2b2",
+            border: "none",
+            background: "transparent"
+          }}
+          onClick={() => navigate("/explore")}
+        >
+          <ion-icon name="chevron-back-outline" style={{fontSize: 18}}></ion-icon>
+          Vertx Main
+        </button>
+        <p className="link" style={{ marginTop: 20 }}>
+          Main Flow
+        </p>
         {flowmenu?.map((item, i) => (
           <div className={item.toLowerCase() == url ? "item sel" : "item"}>
             <a href={`/flow/${item.toLowerCase()}`}>
@@ -45,12 +68,6 @@ export default function FlowNav() {
           </div>
         ))}
         <p className="link">Others</p>
-        <a href="/">
-          <div className="nitem">
-            <ion-icon name="grid-outline"></ion-icon>
-            <p className="i">Dashboard</p>
-          </div>
-        </a>
         <a href="/flow/docflow">
           <div className="nitem">
             <ion-icon name="document-outline"></ion-icon>

@@ -28,7 +28,7 @@ export default function Docflow() {
       <div className="topbar">
         <div>
           <img src={logo} alt="" className="logo" />
-          <p className="title">VERTX DOCFLOW</p>
+          <p className="title">VERTX DOCFLOW <span className="tag">BETA</span></p>
         </div>
         <div className="btns">$5000 Credits</div>
       </div>
@@ -197,10 +197,10 @@ export default function Docflow() {
               setPrompt(e.target.value);
             }}
           />
-          <button className="btn" onClick={() => handlePromptPc()}>
+          <button className="btn" onClick={() => {}}>
             <ion-icon name="attach-outline" style={{fontSize: 20}}></ion-icon>
           </button>
-          <button className="btn" onClick={() => {}}>
+          <button className="btn" onClick={() => {handlePromptPc()}}>
             <ion-icon name="send"></ion-icon>
           </button>
         </div>

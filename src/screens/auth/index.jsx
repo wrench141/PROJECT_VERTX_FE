@@ -2,7 +2,7 @@ import "./style.css";
 import logo from "../../assets/logo.png";
 import axios from "axios";
 import API_KEY from "../../../key.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { useNavigate } from "react-router";
 import Input from "../../components/input/component";
 import Button from "../../components/button/component";
@@ -17,6 +17,7 @@ export default function Signup(){
     const [show, setShow] = useState(false);
     const [load, setLoad] = useState(false);
     
+    const [disabled, setDisabled] = useState(true);
     const signupHandler = async () => {
       setLoad(true);
       const response = await axios
@@ -41,11 +42,19 @@ export default function Signup(){
       }
     };
 
+    useEffect(() => {
+      if (email != "" && password != "" && username != "") {
+        setDisabled(false);
+      } else {
+        setDisabled(true);
+      }
+    }, [email, password, username]);
+
     return (
       <div className="auth-container">
         <div className="wrapper">
           <img src={logo} alt="" className="logo-sn" />
-          <p className="title">Sign up with Vertex</p>
+          <p className="title">Sign up with Vertx</p>
           <Input
             state={username}
             setState={setUname}
@@ -63,17 +72,20 @@ export default function Signup(){
             setState={setPass}
             label={"Set a strong password"}
             theme={"dark"}
+            password={true}
           />
           <div className="btnWrap">
             <Button
-              theme={"light"}
+              theme={disabled ? "light disabled" : "light"}
               context={load ? <div className="loader"></div> : "Create Account"}
               callback={() => signupHandler()}
+              disabled={disabled}
             />
             <Button
               theme={"dark"}
               context={"Forget password"}
               callback={() => {}}
+              disabled={false}
             />
           </div>
           <a href="/signin" className="subhead">

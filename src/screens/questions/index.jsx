@@ -220,6 +220,7 @@ export default function Questions(){
     const [presense, setPresence] = useState("");
     const [industry, setIndustry] = useState("");
     const [sectors, setSectors] = useState("");
+    const [company, setCompany] = useState("");
 
     const [focus, setFocus] = useState(false);
 
@@ -229,6 +230,7 @@ export default function Questions(){
         console.log(window.localStorage.getItem("token"));
         const data = {
           product,
+          company,
           cofounders,
           contacts,
           build,
@@ -271,6 +273,19 @@ export default function Questions(){
               </div>
             </div>
             <div className="inpWrap">
+              <div className="wrap" onClick={() => setFocus(false)}>
+                <label className="lab">
+                  {" "}
+                  <span>✦</span> Company Name?
+                </label>
+                <Input
+                  theme={"dark2"}
+                  label={"Enter your Company name"}
+                  state={product}
+                  setState={setProduct}
+                />
+              </div>
+
               <div className="wrap">
                 <label className="lab">
                   Choose your target countries to secure your investment
@@ -323,11 +338,11 @@ export default function Questions(){
               <div className="wrap" onClick={() => setFocus(false)}>
                 <label className="lab">
                   {" "}
-                  <span>✦</span> You got co-builders?
+                  <span>✦</span> You got co-builders? (separated by commas)
                 </label>
                 <Input
                   theme={"dark2"}
-                  label={"Name them / enter their mails"}
+                  label={"Name them. Ex: Vinod, Sasi.."}
                   state={cofounders}
                   setState={setCofound}
                 />
@@ -335,11 +350,11 @@ export default function Questions(){
               <div className="wrap" onClick={() => setFocus(false)}>
                 <label className="lab">
                   {" "}
-                  <span>✦</span> best contact
+                  <span>✦</span> best contact (separated by commas)
                 </label>
                 <Input
                   theme={"dark2"}
-                  label={"Enter as many as possible"}
+                  label={"Enter as many as possible. Ex: Email, phone.."}
                   state={contacts}
                   setState={setContact}
                 />
@@ -418,13 +433,7 @@ export default function Questions(){
               </div>
             </div>
           </div>
-          {
-            resp ? (
-                <div className="notify">
-                    {resp}
-                </div>
-            ) : null
-          }
+          {resp ? <div className="notify">{resp}</div> : null}
         </div>
       </div>
     );

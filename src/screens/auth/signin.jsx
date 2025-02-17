@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import Input from "../../components/input/component";
 import Button from "../../components/button/component";
+import { useEffect } from "react";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ export default function Signin() {
   const [resp, setResp] = useState("");
   const [show, setShow] = useState(false);
   const [load, setLoad] = useState(false);
+  const [disabled, setDisabled] = useState(true);
+
   const navigate = useNavigate();
 
   const signinHandler = async () => {
@@ -39,11 +42,20 @@ export default function Signin() {
     }
   };
 
+  useEffect(() => {
+    if(email != "" && password != ""){
+      setDisabled(false)
+    }else{
+      setDisabled(true)
+    }
+  }, [email, password])
+
+  
   return (
     <div className="auth-container">
       <div className="wrapper">
         <img src={logo} alt="" className="logo-sn" />
-        <p className="title">Sign in with Vertex</p>
+        <p className="title">Sign in with Vertx</p>
         <Input
           state={email}
           setState={setEmail}
@@ -55,16 +67,17 @@ export default function Signin() {
           setState={setPass}
           label={"Set a strong password"}
           theme={"dark"}
+          password={true}
         />
         <div className="btnWrap">
           <Button
-            theme={"light"}
-            context={
-                load ? <div className="loader"></div> : "Log In"
-            }
+            theme={disabled ? "light disabled" : "light"}
+            context={load ? <div className="loader"></div> : "Log In"}
             callback={() => signinHandler()}
+            disabled={disabled}
           />
           <Button
+            disabled={false}
             theme={"dark"}
             context={"Forget password"}
             callback={() => {}}
@@ -73,11 +86,7 @@ export default function Signin() {
         <a href="/signup" className="subhead">
           Don't have an account? <span>Sign up</span>
         </a>
-        {
-            show ? (
-                <div className="notification">{resp}</div>
-            ) : null
-        }
+        {show ? <div className="notification">{resp}</div> : null}
       </div>
     </div>
   );
