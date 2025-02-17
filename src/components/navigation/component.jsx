@@ -46,14 +46,18 @@ export default function Navigation({cb}) {
             navigate("/flow/match flow");
           }}
         />
-        <Button
-          theme={"dark"}
-          context={"GET OUT"}
-          callback={() => {
-            window.localStorage.removeItem("token");
-            navigate("/authentication");
-          }}
-        />
+        {
+          window.localStorage.getItem("token") != null ? (
+            <Button
+              theme={"dark"}
+              context={"GET OUT"}
+              callback={() => {
+                window.localStorage.removeItem("token");
+                navigate("/authentication");
+              }}
+            />
+          ) : null
+        }
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Input from "../../components/input/component";
 import axios from "axios";
 import API_KEY from "../../../key.js"
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function Step1({ cb }) {
   return (
@@ -22,6 +23,7 @@ function Step1({ cb }) {
     </div>
   );
 }
+
 
 function Step2({ cb, back }) {
   const [traction, setTraction] = useState("");
@@ -235,7 +237,8 @@ function Step2({ cb, back }) {
   const [description, setDescription] = useState("");
   const [presense, setPresence] = useState("");
   const [industry, setIndustry] = useState("");
-  const [sectors, setSectors] = useState("");
+  const [sectors, setSectors] = useState(""); 
+  const [company, setCompany] = useState(""); 
 
   const [focus, setFocus] = useState(false);
 
@@ -265,17 +268,18 @@ function Step2({ cb, back }) {
 
   const startFlow = async() => {
     const data = {
-      traction,
-      sectors,
       description,
-      productionStage,
-      prevFunding,
-      reqFunding,
-      countries
+      company,
+      sectors, 
+      industry
     };
-    // if(response.status == 200){
-    //    cb();
-    // }
+    const response = await axios.post(
+      "https://clumsy-zebra-vertx-c9a7a812.koyeb.app/match/founder-to-founder", data
+    ).catch((e) => e.response);
+    console.log(response.data)
+    if(response.status == 200){
+       cb();
+    }
   }
 
   return (
@@ -303,7 +307,6 @@ function Step2({ cb, back }) {
             dis={true}
           />
         </div>
-
         <div className="wrap" onClick={() => setFocus(false)}>
           <label className="lab">
             {" "}
@@ -370,6 +373,33 @@ function Step2({ cb, back }) {
           />
         </div>
         <div className="wrap">
+          <label className="lab">Company Name</label>
+          <Input
+            theme={"dark2"}
+            label={"Enter your company name"}
+            state={company}
+            setState={setCompany}
+          />
+        </div>
+        <div className="wrap">
+          <label className="lab">best description?</label>
+          <Input
+            theme={"dark2"}
+            label={"Enter Description"}
+            state={description}
+            setState={setDescription}
+          />
+        </div>
+        <div className="wrap" onClick={() => setFocus(false)}>
+          <label className="lab">sectors?</label>
+          <Input
+            theme={"dark2"}
+            label={"Ex: AI Diagnostics, Machine Learning, Healthcare"}
+            state={sectors}
+            setState={setSectors}
+          />
+        </div>
+        <div className="wrap">
           <label className="lab">Current traction</label>
           <Input
             theme={"dark2"}
@@ -431,15 +461,7 @@ function Step2({ cb, back }) {
             ) : null}
           </div>
         </div>
-        <div className="wrap" onClick={() => setFocus(false)}>
-          <label className="lab">sectors?</label>
-          <Input
-            theme={"dark2"}
-            label={"Enter Sectors"}
-            state={sectors}
-            setState={setSectors}
-          />
-        </div>
+
         <div className="wrap" onClick={() => setFocus(false)}>
           <label className="lab">product stage?</label>
           <Input
@@ -449,19 +471,14 @@ function Step2({ cb, back }) {
             setState={setStage}
           />
         </div>
-        <div className="wrap">
-          <label className="lab">best description?</label>
-          <Input
-            theme={"dark2"}
-            label={"Enter Description"}
-            state={description}
-            setState={setDescription}
-          />
-        </div>
         <div className="wrap btns">
-          <Button context={"Proceed"} theme={"light"} callback={() => {
-            startFlow();
-          }} />
+          <Button
+            context={"Proceed"}
+            theme={"light"}
+            callback={() => {
+              startFlow();
+            }}
+          />
         </div>
       </div>
     </div>
@@ -602,6 +619,11 @@ function Step3() {
 
 export default function Matchflow() {
   const [step, setStep] = useState(0);
+  const token = window.localStorage.getItem("token");
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!token) navigate("/signin");
+  }, [])
   return (
     <div className="mt">
       <FlowNav />
