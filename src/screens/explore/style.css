@@ -5,6 +5,8 @@
     gap: 0;
     overflow: hidden;
     height: 100vh;
+    display: grid;
+    grid-template-rows: 70px 1fr;
 }
 
 .container-ot-exp .head{
@@ -48,6 +50,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 0.2fr 1fr;
+    overflow: hidden;
 }
 
 .container-ot-exp .esection{
@@ -55,6 +58,7 @@
     max-height: max-content;
     display: grid;
     grid-template-columns: 1fr 0.3fr;
+    overflow: scroll;
 }
 
 .container-ot-exp .esection .anim{
@@ -65,6 +69,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding-top: 40px;
     margin-bottom: 30px;
     background-image: radial-gradient(#222222 1.5px, transparent 1.5px);
     background-size: 40px 40px;
@@ -184,7 +189,73 @@
 .container-ot-exp .bottom .navwrap.mbv {
     display: none;
 }
+
+
+
+.container-ot-exp .esection .ftcards{
+    width: 90%;
+    height: max-content;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.container-ot-exp .esection .ftcards .card{
+    color: white;
+    font-family: "Manrope";
+    font-size: 12px;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    background: #191919;
+    user-select: none;
+    width: calc(100% / 4);
+}
+
+.container-ot-exp .esection .ftcards .card .title{
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 4px;
+}
+.container-ot-exp .esection .ftcards .card .subt{
+    color: #878787;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+
+.container-ot-exp .esection .ftcards .card .desc{
+    font-size: 12px;
+    color: #bababa;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media only screen and (max-width: 946px) {
+    .container-ot-exp .esection .ftcards .card{
+        width: 100%;
+    }
     .container-ot-exp .bottom .navwrap.mb {
         display: none;
     }
@@ -209,7 +280,7 @@
     }
 
     .container-ot-exp .esection{
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: 1fr max-content;
     }
     
     .container-ot-exp{

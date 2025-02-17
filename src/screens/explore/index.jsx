@@ -3,11 +3,61 @@ import logo from "../../assets/logo.png";
 import Button from "../../components/button/component";
 import {useNavigate} from "react-router"
 import Navigation from "../../components/navigation/component";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import API_KEY from "../../../key.js";
 
 export default function Explore(){
     const navigate = useNavigate();
     const [openNav, setNav] = useState(false);
+    const [founders, setFounders] = useState([]);
+    const [finalData, setFinalData] = useState([]);
+
+    const [prompt, setPrompt] = useState("")
+
+    const startFlow = async () => {
+      const response = await axios.get(API_KEY + "/auth/founder", {
+        headers: {token: window.localStorage.getItem("token")}
+      }).catch((e) => e.response);
+      const client = response?.data?.msg;
+      const data = {
+        description: client.description,
+        company_name: client.companyname,
+        verticals: client.sectors,
+        industry: client.industry,
+      };
+      const resp = await axios
+        .post(
+          "https://clumsy-zebra-vertx-c9a7a812.koyeb.app/match/founder-to-founder",
+          data
+        )
+        .catch((e) => e.response);
+      console.log(resp.data);
+      setFounders(resp.data)
+      setFinalData(resp.data)
+    };
+
+    useEffect(() => {
+      startFlow()
+    }, []);
+
+    useEffect(() => {
+      if(prompt.length > 0){
+        setFinalData(
+          finalData?.map((item) => {
+            if (
+              item?.matched_company.toLowerCase().includes(prompt.toLowerCase())
+            ) {
+              return item;
+            }
+          })
+        );
+      }else{
+        setFinalData(founders)
+      }
+
+    }, [prompt])
+
 
     return (
       <div className="container-ot-exp">
@@ -49,10 +99,23 @@ export default function Explore(){
                   type="text"
                   placeholder="Search for Co Founders ✦"
                   className="search"
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
                 />
                 <button className="cam">
                   <ion-icon name="send-outline"></ion-icon>
                 </button>
+              </div>
+              <div className="ftcards">
+                {
+                  finalData ? finalData?.map((founder) => (
+                  <div className="card">
+                    <p className="title">{founder?.matched_company}</p>
+                    <p className="subt">{founder?.industry}</p>
+                    <p className="desc">{founder?.explanation}</p>
+                  </div>
+                )) : <div className="loader" />
+                }
               </div>
             </div>
             <div className="cards">
