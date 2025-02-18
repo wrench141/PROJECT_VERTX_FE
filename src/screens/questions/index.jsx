@@ -281,8 +281,8 @@ export default function Questions(){
                 <Input
                   theme={"dark2"}
                   label={"Enter your Company name"}
-                  state={product}
-                  setState={setProduct}
+                  state={company}
+                  setState={setCompany}
                 />
               </div>
 
