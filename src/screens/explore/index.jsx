@@ -74,11 +74,15 @@ export default function Explore(){
             onClick={() => setNav(true)}
           ></ion-icon>
           <div className="btwrap mb">
-            {
-              !window.localStorage.getItem("token") ? (
-                <Button context={"Login"} theme={"dark"} callback={() => {navigate("/authentication")}} />
-              ) : null
-            }
+            {!window.localStorage.getItem("token") ? (
+              <Button
+                context={"Login"}
+                theme={"dark"}
+                callback={() => {
+                  navigate("/authentication");
+                }}
+              />
+            ) : null}
           </div>
         </div>
         <div className="bottom" style={{ height: "100%" }}>
@@ -111,15 +115,71 @@ export default function Explore(){
                 </button>
               </div>
               <div className="ftcards">
-                {
-                  (founders && founders.length > 0) ? finalData ? finalData?.map((founder) => (
-                  <div className="card">
-                    <p className="title">{founder?.matched_company}</p>
-                    <p className="subt">{founder?.industry}</p>
-                    <p className="desc">{founder?.explanation}</p>
-                  </div>
-                )) : <div className="loader" />  :null
-                }
+                {founders && founders.length > 0 ? (
+                  finalData ? (
+                    finalData?.map((founder) => (
+                      <div className="card">
+                        <p className="title">{founder?.matched_company}</p>
+                        <p className="subt">{founder?.industry}</p>
+                        <p className="desc">{founder?.explanation}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div
+                        className="card loading"
+                        style={{ animationDelay: "0.5s" }}
+                      >
+                        <div className="title"></div>
+                        <div className="subt"></div>
+                        <div className="desc"></div>
+                      </div>
+                      <div
+                        className="card loading"
+                        style={{ animationDelay: "1s" }}
+                      >
+                        <div className="title"></div>
+                        <div className="subt"></div>
+                        <div className="desc"></div>
+                      </div>
+                      <div
+                        className="card loading"
+                        style={{ animationDelay: "1.5s" }}
+                      >
+                        <div className="title"></div>
+                        <div className="subt"></div>
+                        <div className="desc"></div>
+                      </div>
+                    </>
+                  )
+                ) : (
+                  <>
+                    <div
+                      className="card loading"
+                      style={{ animationDelay: "0.5s" }}
+                    >
+                      <div className="title"></div>
+                      <div className="subt"></div>
+                      <div className="desc"></div>
+                    </div>
+                    <div
+                      className="card loading"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="title"></div>
+                      <div className="subt"></div>
+                      <div className="desc"></div>
+                    </div>
+                    <div
+                      className="card loading"
+                      style={{ animationDelay: "1.5s" }}
+                    >
+                      <div className="title"></div>
+                      <div className="subt"></div>
+                      <div className="desc"></div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <div className="cards">

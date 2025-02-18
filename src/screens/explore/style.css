@@ -155,6 +155,31 @@
     padding: 5px;
 }
 
+.container-ot-exp .esection .ftcards .card.loading .subt,
+.container-ot-exp .esection .ftcards .card.loading .desc,
+.container-ot-exp .esection .ftcards .card.loading .title{
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(35deg, #2c2c2c, #2f2f2f);
+    border-radius: 3px;
+    opacity: 0.3;
+    animation: blink 2.5s ease infinite;
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0.3;
+    }70%{
+        opacity: 1;
+    }100%{
+        opacity: 0.3;
+    }
+}
+
+.container-ot-exp .esection .ftcards .card.loading .subt{
+    width: 60%;
+}
+
 .container-ot-exp .esection .cards .card:hover{
     background: #161616;
 }
