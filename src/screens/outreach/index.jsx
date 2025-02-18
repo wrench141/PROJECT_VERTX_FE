@@ -38,16 +38,21 @@ export default function Outreach(){
     const navigate = useNavigate();
     const [openNav, setNav] = useState(false);
     const [resp, setResp] = useState();
+    const [limit, setLimit] = useState(5)
 
       const getInvestors = async () => {
         const resp = await axios.get(API_KEY + "/investors/", {headers: {token: window.localStorage.getItem("token")}}).catch(e => e.response);
         console.log(resp.data)
-        setResp(resp.data?.slice(0, 5))
+        setResp(resp.data?.slice(0, limit))
       };
 
       useEffect(() => {
         getInvestors()
-      },[])
+      },[]);
+
+      useEffect(() => {
+        getInvestors()
+      }, [limit])
     return (
       <div className="container-ot">
         <div className="topbar">
@@ -126,6 +131,18 @@ export default function Outreach(){
                     {stage}
                   </option>
                 ))}
+              </select>
+              <select className="sel" onChange={(e) => setLimit(e.target.value)}>
+                <option value="Industries" className="opt" disabled selected>
+                  Select Records limit
+                </option>
+                {
+                  Array(5).fill("0").map((k, i) => (
+                    <option value={(i+1)*5} className="opt">
+                      {(i+1)*5}
+                    </option>
+                  ))
+                }
               </select>
             </div>
             <div className="profilecards">
