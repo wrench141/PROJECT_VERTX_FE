@@ -35,6 +35,7 @@ export default function GenerateEmail() {
 
   useEffect(() => {
     console.log(template)
+    editRef.current.innerText = template?.body
   }, [template])
 
   return (
