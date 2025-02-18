@@ -212,6 +212,7 @@
     border: none;
     background: transparent;
     color: white;
+    overflow-y: scroll;
     font-family: "Manrope";
     outline: none;
     font-size: 13px;
