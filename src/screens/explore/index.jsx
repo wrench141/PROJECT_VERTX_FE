@@ -74,7 +74,11 @@ export default function Explore(){
             onClick={() => setNav(true)}
           ></ion-icon>
           <div className="btwrap mb">
-            <Button context={"Login"} theme={"dark"} callback={() => {}} />
+            {
+              window.localStorage.getItem("token") == "" ? (
+                <Button context={"Login"} theme={"dark"} callback={() => {navigate("/authentication")}} />
+              ) : null
+            }
           </div>
         </div>
         <div className="bottom" style={{ height: "100%" }}>

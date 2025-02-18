@@ -4,21 +4,26 @@ import Button from "../../components/button/component";
 import {useNavigate} from "react-router"
 import Navigation from "../../components/navigation/component";
 import InvestorCard from "../../components/investorCard/component";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {companyStages, industries, sectors, currentTraction, previousFunding, requiredFunding} from "./filters.js"
+import API_KEY from "../../../key";
+import axios from "axios"
 
 
 function Card({data}){
   const [show, setShow] = useState(false);
+  const hide = () => {setShow(false)}
+  console.log(data)
   return (
     <div className="pcard" onClick={() => setShow(true)}>
-      {show ? <InvestorCard id={"1234"} setShow={setShow} /> : null}
+      {show ? <InvestorCard id={"1234"} cb={hide} data={data} /> : null}
       <div className="img">
-        <p className="midTit">First Momentum VC</p>
+        <p className="midTit">{data?.company}</p>
       </div>
       <div className="row">
         <div className="pdetails">
-          <p className="ctit">First Momentum VC</p>
-          <p className="subtit">VC Moment</p>
+          <p className="ctit">{data?.firstName + " " + data?.lastName}</p>
+          <p className="subtit">Solo angel</p>
         </div>
         <div className="btnwrap">
           <button className="tag">Mark</button>
@@ -32,7 +37,17 @@ function Card({data}){
 export default function Outreach(){
     const navigate = useNavigate();
     const [openNav, setNav] = useState(false);
+    const [resp, setResp] = useState();
 
+      const getInvestors = async () => {
+        const resp = await axios.get(API_KEY + "/investors/", {headers: {token: window.localStorage.getItem("token")}}).catch(e => e.response);
+        console.log(resp.data)
+        setResp(resp.data?.slice(0, 5))
+      };
+
+      useEffect(() => {
+        getInvestors()
+      },[])
     return (
       <div className="container-ot">
         <div className="topbar">
@@ -48,14 +63,19 @@ export default function Outreach(){
             onClick={() => setNav(true)}
           ></ion-icon>
           <div className="btwrap mb">
-            <Button context={"Login"} theme={"dark"} callback={() => {}} />
+            {window.localStorage.getItem("token") == "" ? (
+              <Button
+                context={"Login"}
+                theme={"dark"}
+                callback={() => {
+                  navigate("/authentication");
+                }}
+              />
+            ) : null}
           </div>
         </div>
         <div className="bottom">
-          <div
-            className="navwrap mb"
-            style={{ height: "calc(100vh - 70px)" }}
-          >
+          <div className="navwrap mb" style={{ height: "calc(100vh - 70px)" }}>
             <Navigation cb={() => setNav(false)} />
           </div>
           <div
@@ -71,33 +91,47 @@ export default function Outreach(){
             </p>
             <div className="filter">
               <select className="sel">
-                <option value="Type" className="opt" disabled selected>
-                  Type
+                <option value="Traction" className="opt" disabled selected>
+                  Traction
                 </option>
+                {currentTraction.map((stage, i) => (
+                  <option key={i} value={stage} className="opt">
+                    {stage}
+                  </option>
+                ))}
               </select>
               <select className="sel">
-                <option value="Stage" className="opt" disabled selected>
-                  Stage
-                </option>
+                {companyStages.map((stage, i) => (
+                  <option key={i} value={stage} className="opt">
+                    {stage}
+                  </option>
+                ))}
               </select>
               <select className="sel">
                 <option value="Sector" className="opt" disabled selected>
                   Sector
                 </option>
+                {sectors.map((stage, i) => (
+                  <option key={i} value={stage} className="opt">
+                    {stage}
+                  </option>
+                ))}
               </select>
               <select className="sel">
-                <option value="Size" className="opt" disabled selected>
-                  Size
+                <option value="Industries" className="opt" disabled selected>
+                  Industries
                 </option>
-              </select>
-              <select className="sel">
-                <option value="Geography" className="opt" disabled selected>
-                  Geography
-                </option>
+                {industries.map((stage, i) => (
+                  <option key={i} value={stage} className="opt">
+                    {stage}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="profilecards">
-              <Card />
+              {resp?.map((item) => item.company != "null-val" ? (
+                <Card data={item} />
+              ):null)}
             </div>
           </div>
         </div>

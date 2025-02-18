@@ -25,18 +25,6 @@ export default function Navigation({cb}) {
             Outreach
           </a>
         </div>
-        <div className={currentPage == "activity" ? "link sel" : "link"}>
-          <ion-icon name="heart-outline"></ion-icon>
-          <a href="/activity" className="lk">
-            Activity
-          </a>
-        </div>
-        <div className={currentPage == "get-verified" ? "link sel" : "link"}>
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          <a href="/get-verified" className="lk">
-            Get Verified
-          </a>
-        </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
         <Button

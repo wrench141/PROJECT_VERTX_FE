@@ -1,14 +1,21 @@
 import Button from "../button/component";
 import "./style.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function InvestorCard({ id, setShow }) {
+export default function InvestorCard({ id, cb, data }) {
   //request data
-  console.log(setShow);
+
   return (
     <div className="backdrop">
       <div className="popup">
         <div className="topsec">
-          <button className="btn" onClick={() => setShow(false)}>
+          <button
+            className="btn"
+            onClick={() => {
+              window.location.href = "/outreach";
+            }}
+          >
             <ion-icon name="arrow-back-outline"></ion-icon>
             Back
           </button>
@@ -27,14 +34,14 @@ export default function InvestorCard({ id, setShow }) {
           <div className="img-cont">
             <div className="img" style={{ height: "100%" }}>
               <p className="ctit" style={{ fontSize: "20px" }}>
-                First Momentum VC
+                {data?.company}
               </p>
             </div>
           </div>
           <div className="invDetails">
             <div className="tags">
               <div className="tag bk">VERIFIED</div>
-              <div className="tag">VC FIRM</div>
+              <div className="tag">Solo angel</div>
             </div>
             <p className="sidehead">Stage interested in</p>
             <div className="tags" style={{ marginTop: 10 }}>
@@ -70,22 +77,8 @@ export default function InvestorCard({ id, setShow }) {
         </div>
         <div className="moreData">
           <p className="sidehead">Overview</p>
-          <p className="desc">
-            We invest in Pre-Seed and Seed High Growth Markets Fintech. We also
-            consider non-fintech companies where embedded finance has the
-            potential to be 25%+ of the revenue.Evidence of early-traction and
-            SAM are important in my analysis.
-          </p>
+          <p className="desc">{data?.about?.slice(0, 300) + "..."}</p>
         </div>
-        {/* <div className="moreData" style={{marginTop: 14}}>
-            <p className="sidehead">Team</p>
-            <p className="desc">
-              We invest in Pre-Seed and Seed High Growth Markets Fintech. We
-              also consider non-fintech companies where embedded finance has the
-              potential to be 25%+ of the revenue.Evidence of early-traction
-              and SAM are important in my analysis.
-            </p>
-          </div> */}
         <div
           className="alright"
           style={{
