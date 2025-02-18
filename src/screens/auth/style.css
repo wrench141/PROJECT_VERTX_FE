@@ -199,7 +199,7 @@
     color: transparent;
     background-clip: text;
     opacity: 0;
-    animation: fade 0.4s ease forwards;
+    animation: fadeop 0.4s ease forwards;
     animation-delay: 2.5s;
 }
 
@@ -216,7 +216,7 @@
     width: 30%;
     text-align: center;
     opacity: 0;
-    animation: fade 0.5s ease forwards;
+    animation: fadeop 0.5s ease forwards;
     animation-delay: 2.7s;
 }
 
