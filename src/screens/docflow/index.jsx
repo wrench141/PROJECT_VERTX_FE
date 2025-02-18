@@ -91,7 +91,7 @@ export default function Docflow() {
 
       <div className="chatsec mb">
         <p className="title">
-          Hi, Chandra Sidhardha ✦ <br /> How would you like to have your pitch?
+          Hi, Founder ✦ <br /> How would you like to have your pitch?
         </p>
         <p className="sub">Try to upload and enhance your pitching skills</p>
         <div className="hold">

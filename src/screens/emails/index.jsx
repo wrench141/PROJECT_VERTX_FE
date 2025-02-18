@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import Button from "../../components/button/component";
 import { useNavigate } from "react-router";
 import FlowNav from "../../components/flowNavigation/component"
+import { useEffect } from "react";
 
 export default function GenerateEmail() {
   const [template, setTemplate] = useState();
@@ -32,6 +33,10 @@ export default function GenerateEmail() {
     }
   };
 
+  useEffect(() => {
+    console.log(template)
+  }, [template])
+
   return (
     <div className="emailCont">
       <FlowNav />
@@ -40,21 +45,19 @@ export default function GenerateEmail() {
           <img src={logo} alt="" className="logo" />
           <p className="title">VERTX EMAILS</p>
         </div>
-        <div className="btns">
-          $5000 Credits
-        </div>
+        <div className="btns">$5000 Credits</div>
       </div>
       <div className="sections">
         <div className="templates">
           <p className="ttitle">Select your template</p>
           {/* card start */}
 
-          {templates?.map((template, i) => (
+          {templates?.map((temp, i) => (
             <div>
-              <div className="type">{template.varient}</div>
+              <div className="type">{temp.varient}</div>
               <div className="template">
                 <p className="subject">
-                  <span>Subject:</span> {template.subject}
+                  <span>Subject:</span> {temp.subject}
                 </p>
                 <div className="subject desc">
                   I hope this email finds you well. I wanted to reach out to
@@ -62,10 +65,7 @@ export default function GenerateEmail() {
                   company that I founded and lead as CEO...
                 </div>
                 <div className="filter">
-                  <button
-                    className="sel"
-                    onClick={() => setTemplate(JSON.stringify(template))}
-                  >
+                  <button className="sel" onClick={() => setTemplate(temp)}>
                     Use this Template
                   </button>
                 </div>
