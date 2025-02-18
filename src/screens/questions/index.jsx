@@ -230,7 +230,7 @@ export default function Questions(){
         console.log(window.localStorage.getItem("token"));
         const data = {
           product,
-          company,
+          companyname: company,
           cofounders,
           contacts,
           build,
