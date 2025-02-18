@@ -97,6 +97,7 @@
     height: max-content;
     border: 1px solid #2b2b2b;
     border-bottom: none;
+    text-transform: uppercase;
     padding: 8px 13px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;

@@ -10,6 +10,7 @@ import { useEffect } from "react";
 
 export default function GenerateEmail() {
   const [template, setTemplate] = useState();
+  const [type, setType] = useState("BUSSINESS")
   const navigate = useNavigate();
   const editRef = useRef();
 
@@ -35,7 +36,7 @@ export default function GenerateEmail() {
 
   useEffect(() => {
     console.log(template)
-    editRef.current.innerText = template?.body
+    editRef.current.innerText = template?.body;
   }, [template])
 
   return (
@@ -75,24 +76,7 @@ export default function GenerateEmail() {
           ))}
 
           {/* card end */}
-          <div>
-            <div className="type">PERSONAL</div>
-            <div className="template">
-              <p className="subject">
-                <span>Subject:</span> Exciting AI/ML Opportunity Aligned with
-                Your Focus Areas
-              </p>
-              <div className="subject desc">
-                I hope this email finds you well. I am John Doe, Founder and CEO
-                of TechStartup Inc., an innovative company specializing in
-                building next-gen AI infrastructure...
-              </div>
-              <div className="filter">
-                <button className="sel">Use this Template</button>
-              </div>
-            </div>
-          </div>
-          <div>
+          {/* <div>
             <div className="type">METRICS</div>
             <div className="template">
               <p className="subject">
@@ -125,12 +109,12 @@ export default function GenerateEmail() {
                 <button className="sel">Use this Template</button>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="cs">
           <div className="editor">
             <div className="enav">
-              <p className="selTitle">Business</p>
+              <p className="selTitle">{template?.varient}</p>
               <button className="cls">
                 <ion-icon name="close-outline"></ion-icon>
               </button>
