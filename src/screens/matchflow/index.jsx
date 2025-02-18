@@ -519,7 +519,6 @@ function Step3() {
     console.log(resp.data);
     if(resp.status == 200){
       setMatches(resp.data.msg);
-      navigate("/flow/outbound")
     }
   };
 
