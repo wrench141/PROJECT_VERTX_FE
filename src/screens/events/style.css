@@ -375,6 +375,41 @@
     margin-bottom: 10px;
 }
 
+
+.pipeline .sections .cards .card .cd .bx .incard .crd.load .count{
+    background: #2f2f2f;
+    animation: fade 2s ease infinite;
+    opacity: 0.3;
+}
+
+.pipeline .sections .cards .card .cd .bx .incard .crd.load .title{
+    width: 150px;
+    height: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background: #2f2f2f;
+    animation: fade 2s ease infinite;
+    opacity: 0.3;
+}
+.pipeline .sections .cards .card .cd .bx .incard .crd.load .sub{
+    width: 100px;
+    height: 10px;
+    border-radius: 10px;
+    background: #2f2f2f;
+    animation: fade 2s ease infinite;
+    opacity: 0.3;
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0.3;
+    }50%{
+        opacity: 1;
+    }100%{
+        opacity: 0.3;
+    }
+}
+
 .pipeline .sections .cards .card .cd .bx .incard .title{
     font-size: 15px;
     margin-bottom: 3px;

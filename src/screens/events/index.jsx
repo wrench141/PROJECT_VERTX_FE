@@ -4,9 +4,11 @@ import logo from "../../assets/logo.png";
 import API_KEY from "../../../key.js";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Pipeline() {
   const [resp, setResp] = useState();
+  const navigate = useNavigate()
 
   const startFlow = async () => {
     const response = await axios
@@ -33,7 +35,11 @@ export default function Pipeline() {
 
   useEffect(() => {
     startFlow();
-  }, [])
+    const token = window.localStorage.getItem("token");
+    if(!token){
+      navigate("/signin")
+    }
+  }, []);
 
   return (
     <div className="pipeline">
@@ -64,7 +70,7 @@ export default function Pipeline() {
               <div className="bx">
                 <div className="box">Matched investors</div>
                 <div className="incard">
-                  {resp &&
+                  {resp ? (
                     resp?.map((item, i) => (
                       <div className="crd" key={i}>
                         <div className="count">0{i + 1}</div>
@@ -73,7 +79,16 @@ export default function Pipeline() {
                           <p className="sub">{item?.industry}</p>
                         </div>
                       </div>
-                    ))}
+                    ))
+                  ) : (
+                    <div className="crd load">
+                      <div className="count"></div>
+                      <div>
+                        <p className="title"></p>
+                        <p className="sub"></p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
