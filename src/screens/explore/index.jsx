@@ -102,7 +102,7 @@ export default function Explore(){
                 Match with the right co-founder tailored to your unique business
                 requirements through the Vertx platform
               </p>
-              <div className="inpwrapper">
+              {/* <div className="inpwrapper">
                 <input
                   type="text"
                   placeholder="Search for Co Founders ✦"
@@ -113,7 +113,7 @@ export default function Explore(){
                 <button className="cam">
                   <ion-icon name="send-outline"></ion-icon>
                 </button>
-              </div>
+              </div> */}
               <div className="ftcards">
                 {founders && founders.length > 0 ? (
                   finalData ? (
@@ -195,8 +195,7 @@ export default function Explore(){
                 </div>
                 <div className="news-details">
                   <p className="description">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Doloribus
+                    [Coming Soon]
                   </p>
                 </div>
               </div>
@@ -206,8 +205,7 @@ export default function Explore(){
                 </div>
                 <div className="news-details">
                   <p className="description">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Doloribus
+                    [Coming Soon]
                   </p>
                 </div>
               </div>
