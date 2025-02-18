@@ -383,4 +383,7 @@
         width: 100%;
         text-align: justify;
     }
+    .mt .topbar div.btns{
+        display: none;
+    }
 }
