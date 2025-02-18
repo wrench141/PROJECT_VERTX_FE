@@ -1,8 +1,40 @@
 import FlowNav from "../../components/flowNavigation/component";
 import "./style.css";
 import logo from "../../assets/logo.png";
+import API_KEY from "../../../key.js";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Pipeline() {
+  const [resp, setResp] = useState();
+
+  const startFlow = async () => {
+    const response = await axios
+      .get(API_KEY + "/auth/founder", {
+        headers: { token: window.localStorage.getItem("token") },
+      })
+      .catch((e) => e.response);
+    const client = response?.data?.msg;
+    const data = {
+      description: client.description,
+      company_name: client.companyname,
+      verticals: client.sectors,
+      industry: client.industry,
+    };
+    const resp = await axios
+      .post(
+        "https://clumsy-zebra-vertx-c9a7a812.koyeb.app/match/founder-to-founder",
+        data
+      )
+      .catch((e) => e.response);
+    console.log(resp.data);
+    setResp(resp.data)
+  };
+
+  useEffect(() => {
+    startFlow();
+  }, [])
+
   return (
     <div className="pipeline">
       <FlowNav />
@@ -32,20 +64,16 @@ export default function Pipeline() {
               <div className="bx">
                 <div className="box">Matched investors</div>
                 <div className="incard">
-                  <div className="crd">
-                    <div className="count">01</div>
-                    <div>
-                      <p className="title">Chandra Sidhardha</p>
-                      <p className="sub">Dedsec Funds</p>
-                    </div>
-                  </div>
-                  <div className="crd">
-                    <div className="count">02</div>
-                    <div>
-                      <p className="title">Chandra Sidhardha</p>
-                      <p className="sub">Dedsec Funds</p>
-                    </div>
-                  </div>
+                  {resp &&
+                    resp?.map((item, i) => (
+                      <div className="crd" key={i}>
+                        <div className="count">0{i + 1}</div>
+                        <div>
+                          <p className="title">{item?.matched_company}</p>
+                          <p className="sub">{item?.industry}</p>
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>
@@ -66,7 +94,10 @@ export default function Pipeline() {
                 <div className="incard">
                   <div className="crd">
                     <div className="count">
-                      <ion-icon name="mail-outline" style={{fontSize: "15px"}}></ion-icon>
+                      <ion-icon
+                        name="mail-outline"
+                        style={{ fontSize: "15px" }}
+                      ></ion-icon>
                     </div>
                     <div>
                       <p className="title">Mail To: Someone@gmail.com</p>
@@ -93,7 +124,10 @@ export default function Pipeline() {
                 <div className="incard">
                   <div className="crd">
                     <div className="count">
-                      <ion-icon name="mail-outline" style={{fontSize: "15px"}}></ion-icon>
+                      <ion-icon
+                        name="mail-outline"
+                        style={{ fontSize: "15px" }}
+                      ></ion-icon>
                     </div>
                     <div>
                       <p className="title">Chandra Sidhardha</p>

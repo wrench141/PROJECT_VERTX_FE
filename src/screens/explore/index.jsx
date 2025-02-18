@@ -42,7 +42,7 @@ export default function Explore(){
     }, []);
 
     useEffect(() => {
-      if(prompt.length > 0){
+      if(prompt.length > 0 && finalData.length > 0){
         setFinalData(
           finalData?.map((item) => {
             if (
@@ -75,7 +75,7 @@ export default function Explore(){
           ></ion-icon>
           <div className="btwrap mb">
             {
-              window.localStorage.getItem("token") == "" ? (
+              !window.localStorage.getItem("token") ? (
                 <Button context={"Login"} theme={"dark"} callback={() => {navigate("/authentication")}} />
               ) : null
             }
@@ -112,13 +112,13 @@ export default function Explore(){
               </div>
               <div className="ftcards">
                 {
-                  finalData ? finalData?.map((founder) => (
+                  (founders && founders.length > 0) ? finalData ? finalData?.map((founder) => (
                   <div className="card">
                     <p className="title">{founder?.matched_company}</p>
                     <p className="subt">{founder?.industry}</p>
                     <p className="desc">{founder?.explanation}</p>
                   </div>
-                )) : <div className="loader" />
+                )) : <div className="loader" />  :null
                 }
               </div>
             </div>

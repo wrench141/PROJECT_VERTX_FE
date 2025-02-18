@@ -21,6 +21,17 @@ export default function Docflow() {
     setResp(response.data);
     console.log(response.data);
   };
+  
+  const uploadFile = async() => {
+    setLoad(true);
+    const response = await axios
+      .post("https://added-janka-feleka-de0cfd8c.koyeb.app/analyze-pitch", {
+        pitch_text: prompt.replace(/\n/g, ""),
+      })
+      .catch((e) => e.response).finally(() => setLoad(false));
+    setResp(response.data);
+    console.log(response.data);
+  }
 
   return (
     <div className="flow">

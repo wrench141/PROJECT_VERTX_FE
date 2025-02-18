@@ -63,7 +63,7 @@ export default function Outreach(){
             onClick={() => setNav(true)}
           ></ion-icon>
           <div className="btwrap mb">
-            {window.localStorage.getItem("token") == "" ? (
+            {!window.localStorage.getItem("token")? (
               <Button
                 context={"Login"}
                 theme={"dark"}
